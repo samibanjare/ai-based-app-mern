@@ -56,16 +56,16 @@ const AIChatInterface = ({ shrink }) => {
   return (
     <div
       className="chat-container"
-      style={{
-        paddingTop: "100px",
-        paddingRight: "30px",
-        height: "95vh",
-        marginLeft: "700px",
-        borderRadius: "24px",
-        display: "flex",
-        flexDirection: "column",
-        overflow: "hidden",
-      }}
+      // style={{
+      //   paddingTop: "100px",
+      //   paddingRight: "30px",
+      //   height: "95vh",
+      //   marginLeft: "700px",
+      //   borderRadius: "24px",
+      //   display: "flex",
+      //   flexDirection: "column",
+      //   overflow: "hidden",
+      // }}
     >
       <header className="chat-header">
         <div className="profile">

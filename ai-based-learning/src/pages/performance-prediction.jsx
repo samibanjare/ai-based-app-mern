@@ -54,11 +54,13 @@ export default function PerformancePrediction({ shrink }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 p-8 text-gray-800"
-    style={{paddingLeft: shrink ? "100px" : "260px",
-      transition: "padding-left 0.3s ease",
-      marginTop: "40px",
+    // style={{
+    //   paddingLeft: shrink ? "100px" : "260px",
+    //   transition: "padding-left 0.3s ease",
+    //   marginTop: "40px",
       
-    }}>
+    // }}
+    >
       <header className="header">
           <span className="title"> <Brain className="text-indigo-500" />Performance Prediction</span>
           <div className="subtitle">

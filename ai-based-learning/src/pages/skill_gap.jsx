@@ -5,13 +5,13 @@ const Skill = ({ shrink }) => {
   return (
     <div
       className="skill-gap-page"
-      style={{
-        paddingLeft: shrink ? "100px" : "260px",
-        transition: "padding-left 0.3s ease",
-        paddingTop: "70px",
-        backgroundColor: "#f4f6fc", // consistent background
-        minHeight: "100vh",
-      }}
+      // style={{
+      //   paddingLeft: shrink ? "100px" : "260px",
+      //   transition: "padding-left 0.3s ease",
+      //   paddingTop: "70px",
+      //   backgroundColor: "#f4f6fc", // consistent background
+      //   minHeight: "100vh",
+      // }}
     >
       {/* Header */}
       <header className="header">

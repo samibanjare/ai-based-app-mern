@@ -6,12 +6,12 @@ export default function Home({ shrink }) {
   const {user} = useAuth();
   return (
     <div className="home-container"
-        style={{
-            paddingLeft: shrink ? "100px" : "260px",
-            transition: "padding-left 0.3s ease",
-            paddingRight: "30px",
-            paddingTop: "70px"
-        }}
+        // style={{
+        //     paddingLeft: shrink ? "100px" : "260px",
+        //     transition: "padding-left 0.3s ease",
+        //     paddingRight: "30px",
+        //     paddingTop: "70px"
+        // }}
     >
 
       {/* Page content */}

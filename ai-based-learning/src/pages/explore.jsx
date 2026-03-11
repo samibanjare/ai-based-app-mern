@@ -5,12 +5,12 @@ const Explore = ({ shrink }) => {
   return (
     <div
       className="explore-container"
-      style={{
-        paddingLeft: shrink ? "100px" : "260px",
-        paddingRight: "30px",
-        paddingTop: "70px",
-        transition: "padding-left 0.3s ease",
-      }}
+      // style={{
+      //   paddingLeft: shrink ? "100px" : "260px",
+      //   paddingRight: "30px",
+      //   paddingTop: "70px",
+      //   transition: "padding-left 0.3s ease",
+      // }}
     >
       {/* Header */}
       <header className="header">

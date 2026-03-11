@@ -143,11 +143,11 @@ const AssignmentSubmission = ({ shrink }) => {
     {/* Assignment list */}
     
         <div className="assignments-list"
-            style={{
-                paddingLeft: shrink ? "100px" : "260px",
-                transition: "padding-left 0.3s ease",
-                maxWidth: "1420px",
-            }}
+            // style={{
+            //     paddingLeft: shrink ? "100px" : "260px",
+            //     transition: "padding-left 0.3s ease",
+            //     maxWidth: "1420px",
+            // }}
         >
             <div className="assignment-list-section panel" style={{ marginBottom: 28 }}>
             <div className="assignment-list-title">
