@@ -230,9 +230,13 @@ Answer:`;
         });
 
         // Safely access generated text
-        const generatedText = response?.candidates?.[0]?.content || 
-                              response?.text || 
-                              "Sorry, I couldn't generate a response.";
+        // const generatedText = response?.candidates?.[0]?.content || 
+        //                       response?.text || 
+        //                       "Sorry, I couldn't generate a response.";
+        const generatedText =
+            response?.response?.text?.() ||
+            response?.candidates?.[0]?.content?.parts?.[0]?.text ||
+            "Sorry, I couldn't generate a response.";
 
         return generatedText;
 

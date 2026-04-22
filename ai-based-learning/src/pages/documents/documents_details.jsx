@@ -7,6 +7,9 @@ import {ArrowLeft, ExternalLink} from "lucide-react";
 import PageHeader from "../../components/common/pageHeader.jsx";
 import Tabs from "../../components/common/tabs.jsx";
 import ChatInterface from "../../components/chat/chatInterface.jsx";
+import AiActions from "../../components/ai/AiActions.jsx";
+import FlashcardManager from "../../components/flashcards/FlashcardManager.jsx";
+import QuizManager from "../../components/quizzes/QuizManager.jsx";
 
 const DocumentsDetails =()=>{
 
@@ -91,15 +94,15 @@ const DocumentsDetails =()=>{
     }
 
     const renderAIActions = () => {
-        return <div className="p-6">AI Actions Section</div>;
+        return <AiActions/>;
     }
 
     const renderFlashcardsTab = () => {
-        return <div className="p-6">Flashcards will appear here</div>;
+        return <FlashcardManager documentId={id}/>;
     }
 
     const renderQuizzesTab = () => {
-        return <div className="p-6">Quizzes will appear here</div>;
+        return <QuizManager documentId={id}/>;
     }
     const tabs =[
         {name: "Content", label:"Content",content: renderContent()},

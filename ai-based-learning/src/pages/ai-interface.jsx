@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./pages-css/ai-interface.css";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import aiService from "../services/ai_service";
+import { useParams } from "react-router-dom";
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
@@ -8,6 +10,30 @@ const AIChatInterface = ({ shrink }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+
+  const { documentId } = useParams();
+
+  useEffect(() => {
+    const fetchChatHistory = async () => {
+      try {
+        const res = await aiService.getChatHistory(documentId); // 👈 pass correct id
+
+        console.log("CHAT HISTORY:", res.data.data);
+
+        const formattedMessages = res.data.data.map((msg, index) => ({
+          id: index,
+          sender: msg.role === "assistant" ? "ai" : "user",
+          text: msg.content,
+        }));
+
+        setMessages(formattedMessages);
+      } catch (error) {
+        console.error("Failed to load chat history:", error);
+      }
+    };
+
+    fetchChatHistory();
+  }, []);
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -56,16 +82,6 @@ const AIChatInterface = ({ shrink }) => {
   return (
     <div
       className="chat-container"
-      // style={{
-      //   paddingTop: "100px",
-      //   paddingRight: "30px",
-      //   height: "95vh",
-      //   marginLeft: "700px",
-      //   borderRadius: "24px",
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   overflow: "hidden",
-      // }}
     >
       <header className="chat-header">
         <div className="profile">

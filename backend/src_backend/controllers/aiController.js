@@ -224,12 +224,12 @@ export const chat = async (req, res, next) => {
             chatHistory = await ChatHistory.create({
                 userId: req.user._id,
                 documentId: document._id,
-                messages: []
+                message: []
             });
         }
 
         // ✅ Ensure messages array exists for old documents
-        if (!chatHistory.messages) chatHistory.messages = [];
+        if (!chatHistory.message) chatHistory.message = [];
 
         // Generate response using Gemini safely
         let answer;
@@ -241,14 +241,14 @@ export const chat = async (req, res, next) => {
         }
 
         // Save conversation
-        chatHistory.messages.push(
-            { role: 'user', content: question, timeStamp: new Date(), relevantChunks: chunkIndices },
-            { role: 'assistant', content: answer, timeStamp: new Date(), relevantChunks: chunkIndices }
+        chatHistory.message.push(
+            { role: 'user', content: question, timestamp: new Date(), relevantChunks: chunkIndices },
+            { role: 'assistant', content: answer, timestamp: new Date(), relevantChunks: chunkIndices }
         );
 
         // Optional: keep last 50 messages
-        if (chatHistory.messages.length > 50) {
-            chatHistory.messages = chatHistory.messages.slice(-50);
+        if (chatHistory.message.length > 50) {
+            chatHistory.message = chatHistory.message.slice(-50);
         }
 
         await chatHistory.save();
@@ -348,7 +348,7 @@ export const getChatHistory = async(req, res, next)=>{
         const chatHistory = await ChatHistory.findOne({
             userId: req.user._id,
             documentId: documentId
-        }).select('messages'); //only retrieve the messages array
+        }).select('message'); //only retrieve the messages array
 
         if (!chatHistory) {
             return res.status(200).json({
@@ -360,7 +360,7 @@ export const getChatHistory = async(req, res, next)=>{
 
         res.status(200).json({
             success: true,
-            data: chatHistory.messages,
+            data: chatHistory.message,
             message: 'Chat history retrived successfully'
         });
 

@@ -25,10 +25,13 @@ function ChatInterface() {
                 setInitialLoading(true);
                 const response = await aiService.getChatHistory(documentId);
 
-                console.log("Chat history API response:", response);
-                console.log("Chat history data:", response.data?.data);
+                // console.log("Chat history API response:", response);
+                // console.log("Chat history data:", response.data?.data);
+                console.log("FULL RESPONSE:", response);
+                console.log("ACTUAL HISTORY:", response.data);
 
-                setHistory(response.data?.data || []);
+                // setHistory(response.data?.data || []);
+                setHistory(response.data || []);
             } catch(error){
                 console.error('Failed to fetch chat history:', error);
             } finally{
